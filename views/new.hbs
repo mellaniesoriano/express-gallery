@@ -7,9 +7,24 @@
 <body>
 <h1>new.hbs</h1>
   <div class='gallery'>
-    <form action="submit">
-      <input type="{{author}}">
+    <form action="/gallery/{{id}}" method="POST">
+      <label form="author">Author</label>
+      <input type="text" name= "author" value={{author}}>
+
+      <label form="link">Link</label>
+      <input type="text" name="link" value={{link}}>
+
+      <label form="description">Description</label>
+      <input type="text" name="description" value={{description}}>
+
+{{!--       <input type="hidden" name="_method" value="PUT"> --}}
+      <input type="submit" value="POST" method="POST">
     </form>
+
+
+  <img src="{{link}}" alt="">
+  {{author}}
+  {{description}}
   </div>
 </body>
 </html>
