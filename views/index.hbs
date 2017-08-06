@@ -5,12 +5,13 @@
   <title>Gallery Index</title>
 </head>
 <body>
-  {{#each gallery}}
+  {{#each allPhotos}}
   <div class='gallery'>
   <h1>index.hbs</h1>
     <img src="{{link}}" alt="">
     <p>author: {{author}}</p>
     <p>description: {{description}}</p>
+    <p>id: {{id}}</p>
   </div>
   {{/each}}
 </body>
