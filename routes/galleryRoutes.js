@@ -4,6 +4,13 @@ const router = express.Router();
 const db = require('../models');
 const Gallery = db.Gallery;
 
+// GET /gallery/new to see a "new photo" form
+router.route('/gallery/new')
+  .get((req, res) => {
+    console.log('getting new?');
+    res.render('new');
+  });
+
 // GET / to view a list of gallery photos
 router.route('/')
 .get((req, res) => {
@@ -11,7 +18,6 @@ router.route('/')
     .then((allPhotos) => {
       console.log(allPhotos);
       console.log('You got this');
-      // res.json();
       res.render('index', {allPhotos});
     })
     .catch((err) => {
@@ -53,10 +59,8 @@ router.route('/gallery')
     });
   });
 
-// GET /gallery/new to see a "new photo" form
-// router.route('/gallery/new')
-//   .get((req, res) => {
-//     // res.render('new');
-//   });
+// PUT /gallery/:id updates a single gallery photo identified by the :id param
+
+
 
 module.exports = router;
