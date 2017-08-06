@@ -11,7 +11,8 @@ router.route('/')
     .then((photos) => {
       console.log(photos);
       console.log('You got this');
-      res.json();
+      // res.json();
+      res.render('index', {gallery: photos});
     })
     .catch((err) => {
       console.log(err);
@@ -27,7 +28,7 @@ router.route('/gallery/:id')
       .then((photo) => {
         console.log(photo);
         console.log('grabbed photo by id');
-        res.end();
+        res.render('gallery');
       })
       .catch((err) => {
         console.log(err);
@@ -52,5 +53,10 @@ router.route('/gallery')
     });
   });
 
+// GET /gallery/new to see a "new photo" form
+// router.route('/gallery/new')
+//   .get((req, res) => {
+//     // res.render('new');
+//   });
 
 module.exports = router;
