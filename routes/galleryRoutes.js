@@ -28,6 +28,17 @@ router.route('/')
 
 // POST /gallery to create a new gallery photo
 router.route('/gallery')
+.get((req, res) => {
+  Gallery.findAll()
+    .then((allPhotos) => {
+      console.log(allPhotos);
+      console.log('You got this');
+      res.render('index', {allPhotos});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  })
 .post((req, res) => {
   Gallery.create({
     author: req.body.author,
@@ -37,7 +48,7 @@ router.route('/gallery')
     .then((data) => {
       console.log(data);
       console.log('created new photo');
-      res.end();
+      res.redirect('/gallery/');
     })
     .catch((err) => {
       console.log(err);
