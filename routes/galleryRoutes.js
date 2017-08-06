@@ -8,11 +8,11 @@ const Gallery = db.Gallery;
 router.route('/')
 .get((req, res) => {
   Gallery.findAll()
-    .then((photos) => {
-      console.log(photos);
+    .then((allPhotos) => {
+      console.log(allPhotos);
       console.log('You got this');
       // res.json();
-      res.render('index', {gallery: photos});
+      res.render('index', {allPhotos});
     })
     .catch((err) => {
       console.log(err);
@@ -25,10 +25,10 @@ router.route('/')
 router.route('/gallery/:id')
   .get((req, res) => {
     Gallery.findById(parseInt(req.params.id))
-      .then((photo) => {
-        console.log(photo);
+      .then((singlePhoto) => {
+        console.log(singlePhoto.id);
         console.log('grabbed photo by id');
-        res.render('gallery');
+        res.render('singlePhoto', {singlePhoto});
       })
       .catch((err) => {
         console.log(err);
