@@ -25,30 +25,15 @@ router.route('/')
     });
   });
 
-// GET /gallery/:id to see a single gallery photo
-// each gallery photo should include a link to delete this gallery photo
-// each gallery photo should include a link to edit this gallery photo
-router.route('/gallery/:id')
-  .get((req, res) => {
-    Gallery.findById(parseInt(req.params.id))
-      .then((singlePhoto) => {
-        console.log(singlePhoto.id);
-        console.log('grabbed photo by id');
-        res.render('singlePhoto', {singlePhoto});
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
 
 // POST /gallery to create a new gallery photo
 router.route('/gallery')
-  .post((req, res) => {
-    Gallery.create({
-      author: req.body.author,
-      link: req.body.link,
-      description: req.body.description
-    })
+.post((req, res) => {
+  Gallery.create({
+    author: req.body.author,
+    link: req.body.link,
+    description: req.body.description
+  })
     .then((data) => {
       console.log(data);
       console.log('created new photo');
@@ -59,8 +44,41 @@ router.route('/gallery')
     });
   });
 
-// PUT /gallery/:id updates a single gallery photo identified by the :id param
-
+// GET /gallery/:id to see a single gallery photo
+// each gallery photo should include a link to delete this gallery photo
+// each gallery photo should include a link to edit this gallery photo
+router.route('/gallery/:id')
+.get((req, res) => {
+  Gallery.findById(parseInt(req.params.id))
+    .then((singlePhoto) => {
+      console.log(singlePhoto.id);
+      console.log('grabbed photo by id');
+      res.render('singlePhoto', {singlePhoto});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  })
+.put((req, res) => {
+  Gallery.update({
+    author: req.body.author,
+    link: req.body.link,
+    description: req.body.description
+  }, {
+    returning: true,
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((data) => {
+    console.log(data);
+    console.log('putting!!');
+    res.end();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
 
 
 module.exports = router;
