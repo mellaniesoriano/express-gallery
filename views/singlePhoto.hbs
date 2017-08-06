@@ -8,9 +8,21 @@
 {{#with singlePhoto}}
 <h1>singlePhoto.hbs</h1>
   <div class='gallery'>
-    <img src="{{link}}" alt=""><br>
-    <a href="">I need to delete photo</a>
-    <a href="">I need to edit photo</a>
+
+  <img src="{{link}}" alt=""><BR>
+  <p>Author: {{author}}</p>
+  <p>Description: {{description}}</p>
+    <form action="/gallery/{{id}}" method="POST">
+      <label form="delete"></label>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+
+    <form action="/gallery/{{id}}" method="POST">
+      <label form="delete"></label>
+      <input type="hidden" name="_method" value="PUT">
+      <input type="submit" value="Edit">
+    </form>
   </div>
   {{/with}}
 </body>
