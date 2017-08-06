@@ -8,6 +8,7 @@ const galleryRoute = require('./routes/galleryRoutes.js');
 
 const app = express();
 
+app.use(bp.urlencoded());
 app.use('/', galleryRoute);
 
 const server = app.listen(PORT, () => {
