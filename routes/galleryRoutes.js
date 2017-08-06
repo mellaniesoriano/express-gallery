@@ -78,6 +78,21 @@ router.route('/gallery/:id')
   .catch((err) => {
     console.log(err);
   });
+})
+.delete((req, res) => {
+  Gallery.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((data) => {
+    console.log(data);
+    console.log('deleted!!');
+    res.end();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 });
 
 
