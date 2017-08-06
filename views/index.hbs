@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery Index</title>
+</head>
+<body>
+  {{#each gallery}}
+  <div class='gallery'>
+  <h1>index.hbs</h1>
+    <img src="{{link}}" alt="">
+    <p>author: {{author}}</p>
+    <p>description: {{description}}</p>
+  </div>
+  {{/each}}
+</body>
+</html>
