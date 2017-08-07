@@ -1,7 +1,7 @@
 {
   "name": "express-gallery",
   "version": "1.0.0",
-  "description": "Express Gallery ===============",
+  "description": "Express Gallery",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,5 +26,9 @@
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
   }
 }
