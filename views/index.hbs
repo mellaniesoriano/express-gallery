@@ -1,7 +1,7 @@
-<div class='allPhotos'>
+<div class='all-photos'>
   {{#each allPhotos}}
   <div class="list-view">
-    <a href="/gallery/{{id}}" class="linkButtons"><div class="each-photo" style="background: url({{link}}) no-repeat center; background-size: cover;"></div></a><img src="{{link}}">
+    <a href="/gallery/{{id}}" class="linkButtons"><div class="each-photo"><img src="{{link}}" width="600px"></div></a>
     <p>Author: {{author}}</p>
     <p>Description: {{description}}</p>
     <p>ID: {{id}}</p>
