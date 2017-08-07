@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Express Gallery</title>
-</head>
-<body>
-{{#with editPhoto}}
-<h1>edit.hbs</h1>
-  <div class='gallery'>
+<div class='edit-page'>
+  {{#with editPhoto}}
     <form action="/gallery/{{id}}" method="POST">
       <label form="author">Author</label>
-      <input type="text" name="author" value={{author}}>
+      <input type="text" name="author" placeholder="author">
 
-      <label form="link">Link</label>
-      <input type="text" name="link" value={{link}}>
+      <label form="link">Image URL</label>
+      <input type="text" name="link" placeholder="URL">
 
       <label form="description">Description</label>
-      <input type="text" name="description" value={{description}}>
+      <input type="text" name="description" placeholder="description">
 
       <input type="hidden" name="_method" value="PUT">
       <input type="submit" value="EDIT">
     </form>
 
-
   <img src="{{link}}" alt="">
   Author: {{author}}<BR>
   Description: {{description}}
-  </div>
   {{/with}}
-</body>
-</html>
+</div>
