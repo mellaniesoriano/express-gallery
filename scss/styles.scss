@@ -1,3 +1,61 @@
+$white: #ffffff;
+$light-grey: #cccccc;
+$grey: #7c7d80;
+$dark-grey: #626262;
+
 body {
-  background-color: yellow;
+  font-family: Arial;
+  color: $grey;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  margin: 0 auto;
+  padding-top: 50px;
+  @media screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+    color: $grey;
+  }
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  @media screen and (min-width: 800px) {
+    padding: 10px 0px 50px 0px;
+    border-top: dotted 1px $light-grey;
+  }
+}
+
+#logo {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  @media screen and (min-width: 800px) {
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 46px;
+    letter-spacing: 4px;
+    color: $dark-grey;
+  }
+}
+
+#company-description {
+  display: none;
+  @media screen and (min-width: 800px) {
+    display: flex;
+    justify-content: flex-end;
+    width: 400px;
+    font-size: 10px;
+    padding-left: 10px;
+    color: $grey;
+    border-left: solid 1px $light-grey;
+
+  }
 }
