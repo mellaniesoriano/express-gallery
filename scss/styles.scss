@@ -8,54 +8,70 @@ body {
   color: $grey;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-#container {
+.container {
   margin: 0 auto;
   padding-top: 50px;
-  @media screen and (min-width: 800px) {
-    width: 800px;
-    margin: 0 auto;
-    color: $grey;
-  }
-}
-
-#header {
   display: flex;
-  flex-direction: row;
-  @media screen and (min-width: 800px) {
-    padding: 10px 0px 50px 0px;
-    border-top: dotted 1px $light-grey;
+  flex-direction: column;
+  @media screen and (min-width: 540px) {
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-between;
   }
 }
 
-#logo {
-  width: 100%;
-  display: flex;
-  margin: 0 auto;
-  @media screen and (min-width: 800px) {
-    justify-content: flex-start;
-    width: 100%;
-    font-size: 46px;
-    letter-spacing: 4px;
-    color: $dark-grey;
-  }
+.header {
+  background-color: orange;
 }
 
-#company-description {
-  display: none;
-  @media screen and (min-width: 800px) {
-    display: flex;
-    justify-content: flex-end;
-    width: 400px;
-    font-size: 10px;
-    padding-left: 10px;
-    color: $grey;
-    border-left: solid 1px $light-grey;
-
-  }
+.logo {
+  background-color: yellow;
 }
+
+.company-description {
+  background-color: blue;
+}
+
+.login-bar {
+  background-color: green;
+}
+
+// #header {
+//   display: flex;
+//   flex-direction: row;
+//   @media screen and (min-width: 540px) {
+//     padding: 10px 0px 50px 0px;
+//     border-top: dotted 1px $light-grey;
+//   }
+// }
+
+// #logo {
+//   width: 60%;
+//   margin: 0 auto;
+//   @media screen and (min-width: 540px) {
+//     justify-content: flex-start;
+//     width: 100%;
+//     font-size: 46px;
+//     letter-spacing: 4px;
+//     color: $dark-grey;
+//   }
+// }
+
+// #company-description {
+//   justify-content: flex-end;
+//   @media screen and (min-width: 540px) {
+//     // display: flex;
+//     width: 40%;
+//     font-size: 10px;
+//     padding-left: 10px;
+//     color: $grey;
+//     border-left: solid 1px $light-grey;
+
+//   }
+// }
