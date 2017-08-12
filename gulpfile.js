@@ -1,13 +1,22 @@
-/* jshint esversion: 6 */
-const gulp = require("gulp");
-const sass = require("gulp-sass");
+var gulp = require('gulp');
+var scss = require('gulp-sass');
+var browserSync = require('browser-sync').create();
 
-gulp.task('styles', function() {
-    gulp.src('scss/styles.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('./public/css'));
+browserSync.init({
+  proxy: "localhost:8080"
 });
 
-gulp.task('default',function() {
-    gulp.watch('scss/styles.scss',['styles']);
+gulp.task('scss', function () {
+  return gulp.src('./scss/*.scss')
+    .pipe(scss())
+    .pipe(gulp.dest('./public/css'));
 });
+
+gulp.task('watch', function (){
+  gulp.watch('./scss/**/*', ['scss']);
+  gulp.watch('./public/**/*').on('change', browserSync.reload);
+});
+
+
+
+gulp.task('default', ['watch']);
