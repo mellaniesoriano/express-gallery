@@ -2,17 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Express Gallery</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+
   </head>
   <body>
-  <div id="container">
-    <div id="header">
-      <h1 id="logo">_ARCHITEKT</h1>
-      <div id="company-description">
-        Welcome to our online portfolio, we are small group of passionate designers and architects, looking to change and create amazing digital images to inspire others to follow in our innovative steps. Free Architect WordPress Theme
+  <div class="container">
+    <div class="header">
+      {{> header}}
+      <div class="login-bar">
+        {{> login}}
       </div>
-  </div>
+    </div>
     {{{body}}}
   </div>
   </body>
