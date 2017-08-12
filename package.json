@@ -19,10 +19,15 @@
   "homepage": "https://github.com/mellaniesoriano/express-gallery#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "browser-sync": "^2.18.13",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "gulp": "^3.9.1",
     "handlebars": "^4.0.10",
     "method-override": "^2.3.9",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^7.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2"
