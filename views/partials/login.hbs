@@ -1,0 +1,15 @@
+{{#unless login}}
+  <div class='login-bar'>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="username">
+      <input type="text" name="password" placeholder="password">
+      <input type="submit" value="SIGN IN" method="POST">
+      <a href="/login/new"><div class="new-user-button">SIGN UP NOW</div></a>
+    </form>
+  </div>
+{{/unless}}
+
+{{#if login}}
+  <h3>Welcome {{login.username}}</h3>
+  <a href="/login/logout">LOG OUT</a>
+{{/if}}
