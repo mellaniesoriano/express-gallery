@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
 const dbFunctions = require('./routeFunctions/dbFunctions.js');
 const db = require('./../models');
 const { User } = db;
@@ -12,7 +13,7 @@ router.route('/')
     res.render('./LoginViews/loginPage');
   })
   .post(passport.authenticate('local', {
-      successRedirect: '/gallery',
+      successRedirect: '/',
       failureRedirect: '/login'
     }));
 
@@ -36,8 +37,9 @@ router.route('/new')
 
 router.route('/logout')
   .get((req, res) => {
-    req.logout();
-    res.redirect('/gallery');
+    console.log('logging out');
+    req.session.destroy();
+    res.redirect('/');
   });
 
 module.exports = router;
