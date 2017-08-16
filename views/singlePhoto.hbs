@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Gallery</title>
-</head>
-<body>
+<div class="list-view">
 {{#with singlePhoto}}
-<h1>singlePhoto.hbs</h1>
-  <div class='gallery'>
-
-  <img src="{{link}}" alt=""><BR>
+  <img src="{{link}}" alt="" id="test-img"><BR>
   <p>Author: {{author}}</p>
   <p>Description: {{description}}</p>
     <form action="/gallery/{{id}}" method="POST">
@@ -23,7 +14,6 @@
       <input type="hidden" name="_method" value="PUT">
       <input type="submit" value="Edit">
     </form>
-  </div>
-  {{/with}}
-</body>
-</html>
+
+{{/with}}
+</div>
