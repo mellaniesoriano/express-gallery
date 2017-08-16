@@ -4,7 +4,9 @@ const Gallery = db.Gallery;
 
 module.exports = (() => {
   const getAllPhotos = () => {
-    return Gallery.findAll();
+    return Gallery.findAll( {
+      order: [ [ 'createdAt', 'DESC' ] ]
+    });
   };
 
   const createPhoto = (req) => {
