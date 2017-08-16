@@ -5,7 +5,10 @@ module.exports = (() => {
   const displayAllPhotos = (req, res) => {
     dbFunctions.getAllPhotos()
       .then((allPhotos) => {
-        res.render('index', {allPhotos});
+        res.render('index', {
+          allPhotos,
+          user:req.user
+        });
       })
       .catch((err) => {
         console.log('err');
@@ -15,7 +18,7 @@ module.exports = (() => {
   const postPhoto = (req, res) => {
     dbFunctions.createPhoto(req)
       .then((newPhoto) => {
-        res.redirect('/gallery');
+        res.redirect('/');
       })
       .catch((err) => {
         console.log(err);
