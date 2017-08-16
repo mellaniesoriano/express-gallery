@@ -1,12 +1,17 @@
+<div class="featured-photo">
+    {{#with allPhotos.[0]}}
+      <img src="{{link}}" alt="">
+    {{/with}}
+  </div>
+
 <div class='all-photos'>
+
   {{#each allPhotos}}
-  <div class="list-view">
     <div class="each-photo">
       <a href="/gallery/{{id}}" class="linkButtons"><img src="{{link}}" width="600px"></a>
-      <p>Author: {{author}}</p>
-      <p>Description: {{description}}</p>
+      <p>By: {{author}}<br />
+      Description: {{description}}</p>
     </div>
-  </div>
   {{/each}}
 </div>
 
