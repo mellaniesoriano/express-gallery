@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
+const session = require('express-session');
 const db = require('../../models');
-const Gallery = db.Gallery;
+const { Gallery, User } = db;
 
 module.exports = (() => {
   const getAllPhotos = () => {
@@ -42,11 +43,24 @@ module.exports = (() => {
     });
   };
 
+  const createUser = (req) => {
+    return User.create({
+      username: req.body.username,
+      password: req.body.password
+    });
+  };
+
+  const logoutUser = (req) => {
+    req.session.destroy();
+  };
+
   return {
     getAllPhotos,
     createPhoto,
     getById,
     updatePhoto,
-    destroyPhoto
+    destroyPhoto,
+    createUser,
+    logoutUser
   };
 })();
