@@ -2,22 +2,38 @@
 const express = require('express');
 const bp = require('body-parser');
 const exphbs = require('express-handlebars');
-const PORT = process.env.PORT || 3000;
-const session = require('express-session');
+const methodOverride = require('method-override');
+
+// passport
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+
+// sessions
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+
+// database
 const db = require('./models');
 const { Gallery, User } = db;
+
+// routes
 const galleryRoute = require('./routes/galleryRoutes.js');
 const loginRoute = require('./routes/loginRoutes.js');
-const methodOverride = require('method-override');
+const CONFIG = require('./config/config.json');
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(bp.urlencoded());
 
 app.use(session({
-  secret: 'Keyboard Cat'
+  store: new RedisStore(),
+  secret: CONFIG.SESSION_SECRET,
+  name: 'express_sessions',
+  cookie: {
+    maxAge: 1000000
+  }
 }));
 
 app.use(passport.initialize());
