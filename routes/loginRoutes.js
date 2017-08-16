@@ -3,10 +3,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const session = require('express-session');
 const dbFunctions = require('./routeFunctions/dbFunctions.js');
-const db = require('./../models');
-const { User } = db;
 
 router.route('/')
   .get((req, res) => {
@@ -22,11 +19,7 @@ router.route('/new')
     res.render('./LoginViews/newUserPage');
   })
   .post((req, res) => {
-    console.log('made new user!!');
-    return User.create({
-      username: req.body.username,
-      password: req.body.password
-    })
+    dbFunctions.createUser(req)
     .then(() => {
       res.redirect('/');
     })
@@ -37,8 +30,7 @@ router.route('/new')
 
 router.route('/logout')
   .get((req, res) => {
-    console.log('logging out');
-    req.session.destroy();
+    dbFunctions.logoutUser(req);
     res.redirect('/');
   });
 
