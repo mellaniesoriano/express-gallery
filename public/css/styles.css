@@ -29,8 +29,7 @@ img {
 
 .header {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
   font-family: "Montserrat", serif;
   font-weight: 400;
@@ -41,8 +40,9 @@ img {
       border-top: dotted 0.1rem #cccccc; } }
 
 .logo {
+  display: flex;
   text-align: left;
-  justify-content: flex-start;
+  align-content: flex-start;
   margin: 0 auto;
   font-family: "Montserrat", serif; }
   @media screen and (min-width: 414px) {
@@ -54,10 +54,9 @@ img {
 .company-description {
   display: none;
   width: 40%;
-  justify-content: flex-end;
+  align-content: flex-end;
   font-family: "Montserrat", serif;
-  font-weight: 300;
-  width: 20rem; }
+  font-weight: 300; }
   @media screen and (min-width: 540px) {
     .company-description {
       display: flex;
@@ -102,3 +101,7 @@ img {
   height: 20rem;
   width: 100%;
   object-fit: cover; }
+
+.header a {
+  text-decoration: none;
+  background-color: orange; }
