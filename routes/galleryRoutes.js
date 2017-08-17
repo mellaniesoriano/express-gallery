@@ -4,8 +4,6 @@ const router = express.Router();
 const session = require('express-session');
 const helpers = require('./routeFunctions/galleryFunctions.js');
 
-
-
 router.route('/gallery/new')
   .get((req, res) => {
     res.render('new');
