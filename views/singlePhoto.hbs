@@ -1,8 +1,10 @@
-<div class="container">
-<div class="list-view">
+<div class="list-page">
 {{#with singlePhoto}}
-  <img src="{{link}}" alt="" id="test-img"><BR>
-  <p>Author: {{author}}</p>
+
+  <div class="main-img">
+    <img src="{{link}}" alt="">
+  </div>
+  <p class="author">Author: {{author}}</p>
   <p>Description: {{description}}</p>
     <form action="/gallery/{{id}}" method="POST">
       <label form="delete"></label>
@@ -17,5 +19,4 @@
     </form>
 
 {{/with}}
-</div>
 </div>
