@@ -25,16 +25,6 @@ module.exports = (() => {
       });
   };
 
-  const getById = (req, res) => {
-    dbFunctions.getById(req)
-      .then((singlePhoto) => {
-        res.render('singlePhoto', {singlePhoto});
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const editPhoto = (req, res) => {
     dbFunctions.updatePhoto(req)
       .then((data) => {
@@ -72,7 +62,6 @@ module.exports = (() => {
   return {
     displayAllPhotos,
     postPhoto,
-    getById,
     editPhoto,
     deletePhoto,
     editById
