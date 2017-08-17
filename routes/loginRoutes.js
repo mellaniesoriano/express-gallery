@@ -19,13 +19,7 @@ router.route('/new')
     res.render('./LoginViews/newUserPage');
   })
   .post((req, res) => {
-    dbFunctions.createUser(req)
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    dbFunctions.createUser(req, res);
   });
 
 router.route('/logout')
