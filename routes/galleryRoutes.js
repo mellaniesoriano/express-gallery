@@ -13,7 +13,7 @@ router.route('/gallery/new')
 
 router.route('/')
   .get((req, res) => {
-    helpers.displayAllPhotos(req, res);
+    helpers.displayAllPhotos(req, res, 'index');
   });
 
 router.route('/gallery')
@@ -23,7 +23,7 @@ router.route('/gallery')
 
 router.route('/gallery/:id')
   .get((req, res) => {
-    helpers.getById(req, res);
+    helpers.displayAllPhotos(req, res, 'singlePhoto');
   })
   .put((req, res) => {
     helpers.editPhoto(req, res);
