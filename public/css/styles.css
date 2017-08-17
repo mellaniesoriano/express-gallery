@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800");
 body {
   font-family: "Montserrat", serif;
   font-weight: 300; }
@@ -12,10 +13,6 @@ img {
   max-width: 80rem;
   margin: 0 auto; }
 
-.header-contain {
-  max-width: 80rem;
-  margin: 0 auto; }
-
 .container {
   margin: 0 auto;
   display: flex;
@@ -26,6 +23,47 @@ img {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center; } }
+
+.all-photos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.each-photo {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 0.03rem solid #cccccc;
+  padding: 0.4rem;
+  margin-top: 0.8rem;
+  width: 100%; }
+  @media screen and (min-width: 540px) {
+    .each-photo {
+      width: 31%; } }
+
+.featured-photo {
+  width: 98%;
+  object-fit: cover;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 20px; }
+
+.each-photo img {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover; }
+
+.header a {
+  text-decoration: none; }
+
+.list-page {
+  background-color: yellow; }
+
+.author {
+  background-color: orange; }
+
+.header-contain {
+  max-width: 80rem;
+  margin: 0 auto; }
 
 .header {
   display: flex;
@@ -73,34 +111,3 @@ img {
   font-size: 0.6rem;
   margin-top: 0.35rem;
   margin-left: 0.5rem; }
-
-.all-photos {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center; }
-
-.each-photo {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 0.03rem solid #cccccc;
-  padding: 0.4rem;
-  margin-top: 0.8rem;
-  width: 100%; }
-  @media screen and (min-width: 540px) {
-    .each-photo {
-      width: 31%; } }
-
-.featured-photo {
-  width: 98%;
-  object-fit: cover;
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 20px; }
-
-.each-photo img {
-  height: 20rem;
-  width: 100%;
-  object-fit: cover; }
-
-.header a {
-  text-decoration: none; }
