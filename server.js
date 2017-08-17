@@ -3,6 +3,7 @@ const express = require('express');
 const bp = require('body-parser');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
+const bcrypt = require('bcrypt');
 
 // passport
 const passport = require('passport');
@@ -49,16 +50,21 @@ passport.use(new LocalStrategy(
         username : username
       }
     }).then((user) => {
-      console.log('user exists in DB');
-      if (user.password === password) {
-        console.log('username and password successful');
-        return done(null, user);
-      } else {
-        console.log('password was incorrect');
-        return done(null, false, { message: 'incorrect password' });
-      }
+      bcrypt.compare(password, user.password)
+        .then( result => {
+          console.log(result);
+          if (result) {
+            console.log('username and password correct!');
+            return done(null, user);
+          } else {
+            console.log('password does not match!');
+            return done(null, false, { message : 'incorrect password!' });
+          }
+        }).catch( err => {
+          console.log(err);
+        });
+
     }).catch((err) => {
-      console.log('username not found');
       console.log(err);
       return done(null, false, { message: 'incorrect username' });
     });
