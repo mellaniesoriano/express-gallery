@@ -1,7 +1,10 @@
 /* jshint esversion: 6 */
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 const db = require('../../models');
 const { Gallery, User } = db;
+
+const saltRounds = 10;
 
 module.exports = (() => {
   const getAllPhotos = () => {
@@ -43,11 +46,30 @@ module.exports = (() => {
     });
   };
 
-  const createUser = (req) => {
-    return User.create({
-      username: req.body.username,
-      password: req.body.password
-    });
+  const createUser = (req, res) => {
+    console.log('username: ', req.body.username);
+    console.log('password: ', req.body.password);
+
+    bcrypt.genSalt(saltRounds)
+      .then( salt => {
+        bcrypt.hash(req.body.password, salt)
+        .then( hash => {
+          console.log(hash);
+
+          User.create({
+            username: req.body.username,
+            password: hash
+          }).then( () => {
+            console.log('inserted new user!');
+            res.end();
+          }).catch( err => {
+            console.log(err);
+          });
+        });
+      }).catch( err => {
+        console.log(err);
+      });
+      res.end();
   };
 
   const logoutUser = (req) => {
