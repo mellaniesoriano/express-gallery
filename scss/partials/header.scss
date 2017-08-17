@@ -1,0 +1,56 @@
+.header-contain {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  font-family: $montserrat;
+  font-weight: 400;
+  width: 80rem;
+  @media screen and (min-width: 414px) {
+    margin: 2rem;
+    border-top: dotted 0.1rem $light-grey;
+  }
+}
+
+.logo {
+  display: flex;
+  text-align: left;
+  align-content: flex-start;
+  margin: 0 auto;
+  font-family: $montserrat;
+  @media screen and (min-width: 414px) {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    color: $dark-grey;
+  }
+}
+
+.company-description {
+  display: none;
+  width: 40%;
+  align-content: flex-end;
+  font-family: $montserrat;
+  font-weight: 300;
+  @media screen and (min-width: 540px) {
+    display: flex;
+    font-size: 0.65rem;
+    padding-left: 0.8rem;
+    color: $grey;
+    border-left: solid 0.03rem $light-grey;
+
+  }
+}
+
+.login-bar {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $montserrat;
+  font-weight: 300;
+  font-size: 0.6rem;
+  margin-top: 0.35rem;
+  margin-left: 0.5rem;
+}
