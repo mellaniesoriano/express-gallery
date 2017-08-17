@@ -2,10 +2,10 @@
 const dbFunctions = require('./dbFunctions.js');
 
 module.exports = (() => {
-  const displayAllPhotos = (req, res) => {
+  const displayAllPhotos = (req, res, views) => {
     dbFunctions.getAllPhotos()
       .then((allPhotos) => {
-        res.render('index', {
+        res.render(views, {
           allPhotos,
           user:req.user
         });
