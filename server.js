@@ -50,7 +50,8 @@ passport.use(new LocalStrategy(
         username : username
       }
     }).then((user) => {
-      bcrypt.compare(password, user.password)
+      if(user !== null) {
+        bcrypt.compare(password, user.password)
         .then( result => {
           console.log(result);
           if (result) {
@@ -63,6 +64,10 @@ passport.use(new LocalStrategy(
         }).catch( err => {
           console.log(err);
         });
+      } else {
+        throw 'user not found';
+      }
+
 
     }).catch((err) => {
       console.log(err);
