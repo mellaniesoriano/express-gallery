@@ -15,7 +15,6 @@ module.exports = (() => {
 
   const createPhoto = (req) => {
     return Gallery.create({
-      id: req.params.id,
       author: req.body.author,
       link: req.body.link,
       description: req.body.description

@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const session = require('express-session');
 const helpers = require('./routeFunctions/galleryFunctions.js');
+const db = require('../models');
+const { Gallery, User } = db;
 
 const { photoMetas } = require('../collections/photoMeta.js');
 
@@ -13,46 +15,16 @@ router.route('/gallery/new')
 
 router.route('/')
   .get((req, res) => {
-    // photoMeta().find().toArray((err, metas) => {
-    //   console.log('**METAS**', metas);
-    // });
-
-    photoMetas().find().toArray()
-      .then(metas => {
-        console.log(metas);
-      })
-      .catch( err => {
-        console.log(err);
-      });
-
-
     helpers.displayAllPhotos(req, res, 'index');
   });
 
 router.route('/gallery')
   .post((req, res) => {
-    console.log('*** POSTING ID **** >>>', req.params.id);
-    let metaObj = {
-      id: req.params.id,
-      meta: req.body.meta
-    };
-
-    photoMetas().insertOne(metaObj);
-
     helpers.postPhoto(req, res);
   });
 
 router.route('/gallery/:id')
   .get((req, res) => {
-    photoMetas().find().toArray()
-      .then(metas => {
-        console.log(metas);
-      })
-      .catch( err => {
-        console.log(err);
-      });
-
-
     helpers.displayAllPhotos(req, res, 'singlePhoto');
   })
   .put((req, res) => {

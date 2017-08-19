@@ -1,6 +1,11 @@
 /* jshint esversion: 6 */
 const dbFunctions = require('./dbFunctions.js');
 
+const db = require('../../models');
+const { Gallery, User } = db;
+
+const { photoMetas } = require('../../collections/photoMeta.js');
+
 module.exports = (() => {
   const displayAllPhotos = (req, res, views) => {
     dbFunctions.getAllPhotos()
@@ -14,13 +19,36 @@ module.exports = (() => {
       .catch((err) => {
         console.log('err');
       });
-  };
+
+      photoMetas().find().toArray()
+      .then(metas => {
+        console.log(metas);
+      })
+      .catch( err => {
+        console.log(err);
+      });
+    };
 
   const postPhoto = (req, res) => {
     dbFunctions.createPhoto(req)
-      .then((newPhoto) => {
-        res.redirect('/');
+      .then((data) => {
+      Gallery.findAll({
+        limit: 1,
+        order: [['createdAt', 'DESC']]
       })
+      .then((item) => {
+        console.log('*** ITEM >> ', item[0].id);
+        console.log(req.body.meta);
+        let metaObj = {
+          id: item[0].id,
+          meta: req.body.meta
+        };
+        photoMetas().insertOne(metaObj);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    })
       .catch((err) => {
         console.log(err);
       });
