@@ -7,7 +7,8 @@ module.exports = (() => {
       .then((allPhotos) => {
         res.render(views, {
           allPhotos,
-          user:req.user
+          user: req.user,
+          id: req.params.id
         });
       })
       .catch((err) => {

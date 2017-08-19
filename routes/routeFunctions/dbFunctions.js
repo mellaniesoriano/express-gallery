@@ -15,6 +15,7 @@ module.exports = (() => {
 
   const createPhoto = (req) => {
     return Gallery.create({
+      id: req.params.id,
       author: req.body.author,
       link: req.body.link,
       description: req.body.description
@@ -27,6 +28,7 @@ module.exports = (() => {
 
   const updatePhoto = (req) => {
     return Gallery.update({
+      id: req.params.id,
       author: req.body.author,
       link: req.body.link,
       description: req.body.description
@@ -69,7 +71,7 @@ module.exports = (() => {
       }).catch( err => {
         console.log(err);
       });
-      res.end();
+      res.redirect('/');
   };
 
   const logoutUser = (req) => {
