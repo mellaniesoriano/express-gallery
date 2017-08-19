@@ -1,7 +1,47 @@
 .list-page {
-  background-color: yellow;
+  // background-color: yellow;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 80rem;
 }
 
-.author {
-  background-color: orange;
+.main-photo-box {
+  // background-color: green;
+  width: 100%;
+  border-bottom: 1px solid $light-grey;
+  padding: 1rem;
+
+  @media screen and (min-width: 540px) {
+    width: 40rem;
+    object-fit: cover;
+  }
+}
+
+.main-photo {
+  width: 100%;
+
+    @media screen and (min-width: 540px) {
+    width: 40rem;
+    object-fit: cover;
+  }
+
+}
+
+.side-photos {
+  // background-color: purple;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+
+  @media screen and (min-width: 540px) {
+    width: 31%;
+  }
+}
+
+.side-photos img {
+  // height: 20rem;
+  width: 100%;
+  object-fit: cover;
 }

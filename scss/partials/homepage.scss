@@ -6,13 +6,6 @@ body {
   font-weight: $light;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-}
-
 .contain {
   max-width: 80rem;
   margin: 0 auto;
@@ -23,6 +16,7 @@ img {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: center;
 
   @media screen and (min-width: 414px) {
     flex-direction: row;
@@ -37,6 +31,7 @@ img {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .each-photo {
@@ -52,8 +47,9 @@ img {
   }
 }
 
-.featured-photo {
-  width: 98%;
+.featured-photo img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-bottom: 1px solid $light-grey;
   padding-bottom: 20px;
