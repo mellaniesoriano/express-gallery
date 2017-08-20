@@ -1,12 +1,11 @@
 <div class='edit-page'>
 
-
+  <div class="image-container">
     <form action="/gallery/{{picture.id}}/edit" method="POST">
+    <img src="{{picture.link}}" alt=""><br />
 
-  <img src="{{picture.link}}" alt=""><br />
-  Author: {{picture.author}}<br />
-  Description: {{picture.description}}<br />
-
+    <div class="image-info">
+      By: {{picture.author}}<br />Description: {{picture.description}}<br />
       <label form="author">Author</label>
       <input type="text" name="author" value="{{picture.author}}">
 
@@ -16,31 +15,31 @@
       <label form="description">Description</label>
       <input type="text" name="description" value="{{picture.description}}"><br />
 
-      <input type="hidden" name="_method" value="PUT">
-      <input type="submit" value="UPDATE"><br />
       <label for="Tags">Tags:</label>
-  {{#each metaData}}
-    <br>
-    <input type="checkbox" name="{{@key}}" value="{{this}}">{{@key}}: {{this}}
-  {{/each}}
+      {{#each metaData}}<br />
+        <input type="checkbox" name="{{@key}}" value="{{this}}">{{@key}}: {{this}}
+      {{/each}}
 
-      <div class="add_meta_field">
-        <ul id="meta_fields"></ul>
+    <div class="add_meta_field">
+      <ul id="meta_fields"></ul>
+      <button id="add_meta_field_button" type="button" >Add Meta Data</button>
+    </div>
 
-        <button id="add_meta_field_button" type="button" >Add Meta Data</button>
-      </div>
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="UPDATE"><br />
 
-    </form>
+  </form>
 
-    <form action="/gallery/{{picture.id}}/edit" method="POST">
-        <label form="delete"></label>
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
-      </form>
+  <form action="/gallery/{{picture.id}}/edit" method="POST">
+    <label form="delete"></label>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+  </form>
+
+  </div>
 
 
-
+  </div>
 </div>
-
 
 <script src="/js/metaFields.js"></script>
