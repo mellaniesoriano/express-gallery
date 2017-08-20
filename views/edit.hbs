@@ -1,14 +1,14 @@
 <div class='edit-page'>
-  {{#with editPhoto}}
-    <form action="/gallery/{{id}}" method="POST">
+  {{#with picture}}
+    <form action="/gallery/{{id}}/edit" method="POST">
       <label form="author">Author</label>
-      <input type="text" name="author" placeholder="author">
+      <input type="text" name="author" value="{{author}}">
 
       <label form="link">Image URL</label>
-      <input type="text" name="link" placeholder="URL">
+      <input type="text" name="link" value="{{link}}">
 
       <label form="description">Description</label>
-      <input type="text" name="description" placeholder="description">
+      <input type="text" name="description" value="{{description}}">
 
 
 
@@ -23,10 +23,11 @@
 
     </form>
 
-  <img src="{{link}}" alt="">
-  Author: {{author}}<BR>
-  Description: {{description}}
+  <img src="{{link}}" alt=""><br />
+  Author: {{author}}<br />
+  Description: {{description}}<br />
   {{/with}}
+  Tags: {{metaData.place}}
 </div>
 
 <script src="/js/metaFields.js"></script>
