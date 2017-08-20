@@ -69,7 +69,8 @@ module.exports = (() => {
   const deletePhoto = (req, res) => {
     dbFunctions.destroyPhoto(req)
       .then((data) => {
-        console.log('* DELETED *', data);
+        let pictureID = parseInt(req.params.id);
+        photoMetas().findOneAndDelete({id:pictureID});
         res.redirect('/');
         res.end();
       })

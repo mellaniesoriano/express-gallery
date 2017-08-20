@@ -124,6 +124,8 @@ router.route('/gallery/:id/edit')
 
   })
   .delete((req, res) => {
+    // let pictureID = parseInt(req.params.id);
+    // photoMetas().findOneAndDelete({id:pictureID});
     helpers.deletePhoto(req, res);
   });
 
