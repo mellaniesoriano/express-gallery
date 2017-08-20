@@ -47,6 +47,7 @@ module.exports = (() => {
       .catch((err) => {
         console.log(err);
       });
+      res.redirect('/');
     })
       .catch((err) => {
         console.log(err);
@@ -54,7 +55,7 @@ module.exports = (() => {
   };
 
   const editPhoto = (req, res) => {
-    dbFunctions.updatePhoto(req)
+    dbFunctions.updatePhoto(req);
       // .then((data) => {
       //   console.log('successfully updated photo!');
       // })
@@ -87,18 +88,21 @@ module.exports = (() => {
       });
   };
 
-  // const getById = (req, res) => {
-  //   dbFunctions.getById(req)
-  //     .then((singlePhoto) => {
-  //       res.render('singlePhoto', {singlePhoto})
-  //     })
-  // }
+  const removeValues = (obj) => {
+  for (var key in obj){
+    if(obj.hasOwnProperty(key)){
+      obj[key] = "";
+    }
+  }
+  return obj;
+};
 
   return {
     displayAllPhotos,
     postPhoto,
     editPhoto,
     deletePhoto,
-    editById
+    editById,
+    removeValues
   };
 })();
