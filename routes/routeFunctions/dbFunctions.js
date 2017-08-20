@@ -22,7 +22,8 @@ module.exports = (() => {
   };
 
   const getById = (req) => {
-    return Gallery.findById(parseInt(req.params.id));
+    let pictureID = parseInt(req.params.id);
+    return Gallery.findById(pictureID);
   };
 
   const updatePhoto = (req) => {
@@ -32,7 +33,6 @@ module.exports = (() => {
       link: req.body.link,
       description: req.body.description
     }, {
-      returning: true,
       where: {
         id: req.params.id
       }
@@ -77,6 +77,15 @@ module.exports = (() => {
     req.session.destroy();
   };
 
+  const removeValues = (obj) => {
+    for (var key in obj){
+      if(obj.hasOwnProperty(key)){
+        obj[key] = "";
+      }
+    }
+    return obj;
+  };
+
   return {
     getAllPhotos,
     createPhoto,
@@ -84,6 +93,7 @@ module.exports = (() => {
     updatePhoto,
     destroyPhoto,
     createUser,
-    logoutUser
+    logoutUser,
+    removeValues
   };
 })();

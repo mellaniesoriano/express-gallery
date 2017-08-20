@@ -55,16 +55,52 @@ module.exports = (() => {
   };
 
   const editPhoto = (req, res) => {
-    dbFunctions.updatePhoto(req);
-      // .then((data) => {
-      //   console.log('successfully updated photo!');
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      // });
-      // res.redirect(`/gallery/${parseInt(req.params.id)}/edit`);
-      // res.end();
-  };
+    dbFunctions.updatePhoto(req)
+      .then((metaData) => {
+        photoMetas().updateOne({
+          id: parseInt(req.params.id)},
+          {
+            $set: req.body.meta
+          });
+        photoMetas().update(
+          query,{
+            $unset: dbFunctions.removeValues(metaRemove)
+          });
+        res.redirect('edit');
+      })
+      .catch( err => {
+        console.log('PUT ERROR', err);
+      });
+
+      let pictureID = parseInt(req.params.id);
+      let addMeta = req.body.meta;
+      let metaRemove = req.body;
+      delete metaRemove.author;
+      delete metaRemove.description;
+      delete metaRemove.link;
+
+      let query = { id: pictureID };
+      photoMetas().findOne(query, (err, data) => {
+        if(data){
+          photoMetas().update(
+            query,
+            {
+              $set: addMeta
+            }
+            );
+          photoMetas().update(
+            query,
+            {
+              $unset: dbFunctions.removeValues(metaRemove)
+            }
+            );
+        } else {
+          let metaObj = req.body.meta;
+          metaObj.id = pictureID;
+          photoMetas().insertOne(metaObj);
+        }
+      });
+    };
 
   const deletePhoto = (req, res) => {
     dbFunctions.destroyPhoto(req)
@@ -77,7 +113,7 @@ module.exports = (() => {
       .catch((data) => {
         console.log(err);
       });
-  };
+    };
 
   const editById = (req, res) => {
     dbFunctions.getById(req)
@@ -87,16 +123,31 @@ module.exports = (() => {
       .catch((err) => {
         console.log(err);
       });
-  };
+    };
 
-  const removeValues = (obj) => {
-  for (var key in obj){
-    if(obj.hasOwnProperty(key)){
-      obj[key] = "";
-    }
-  }
-  return obj;
-};
+  const getPhotoById = (req, res) => {
+    dbFunctions.getById(req)
+      .then((picture) => {
+        res.redirect(`/gallery/${req.params.id}/edit`);
+      });
+    };
+
+  const getEditPhotoId = (req, res) => {
+    dbFunctions.getById(req)
+      .then((picture) => {
+        let query = { id: parseInt(req.params.id) };
+        photoMetas().findOne(query, {id:0, _id:0})
+          .then((metaData) => {
+            res.render('edit', {
+              picture: picture.dataValues,
+              metaData: metaData
+            });
+          });
+        })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
 
   return {
     displayAllPhotos,
@@ -104,6 +155,7 @@ module.exports = (() => {
     editPhoto,
     deletePhoto,
     editById,
-    removeValues
+    getPhotoById,
+    getEditPhotoId
   };
 })();
