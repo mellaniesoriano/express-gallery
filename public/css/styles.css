@@ -52,40 +52,15 @@ body {
 .header a {
   text-decoration: none; }
 
-.list-page {
+.edit-page {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   width: 80rem; }
 
-.main-photo-box {
-  width: 100%;
-  border-bottom: 1px solid #cccccc;
-  padding: 1rem; }
-  @media screen and (min-width: 540px) {
-    .main-photo-box {
-      width: 40rem;
-      object-fit: cover; } }
-
-.main-photo {
-  width: 100%; }
-  @media screen and (min-width: 540px) {
-    .main-photo {
-      width: 40rem;
-      object-fit: cover; } }
-
-.side-photos {
+.image-container {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem; }
-  @media screen and (min-width: 540px) {
-    .side-photos {
-      width: 31%; } }
-
-.side-photos img {
-  width: 100%;
-  object-fit: cover; }
+  flex-flow: column wrap; }
 
 .header-contain {
   max-width: 80rem;
