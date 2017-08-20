@@ -39,10 +39,9 @@ module.exports = (() => {
       .then((item) => {
         console.log('*** ITEM >> ', item[0].id);
         console.log(req.body.meta);
-        let metaObj = {
-          id: item[0].id,
-          meta: req.body.meta
-        };
+        let metaObj = req.body.meta;
+        metaObj.id = item[0].id;
+
         photoMetas().insertOne(metaObj);
       })
       .catch((err) => {
@@ -56,14 +55,14 @@ module.exports = (() => {
 
   const editPhoto = (req, res) => {
     dbFunctions.updatePhoto(req)
-      .then((data) => {
-        console.log('successfully updated photo!');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-      res.redirect(`/gallery/${parseInt(req.params.id)}/edit`);
-      res.end();
+      // .then((data) => {
+      //   console.log('successfully updated photo!');
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // });
+      // res.redirect(`/gallery/${parseInt(req.params.id)}/edit`);
+      // res.end();
   };
 
   const deletePhoto = (req, res) => {
@@ -87,6 +86,13 @@ module.exports = (() => {
         console.log(err);
       });
   };
+
+  // const getById = (req, res) => {
+  //   dbFunctions.getById(req)
+  //     .then((singlePhoto) => {
+  //       res.render('singlePhoto', {singlePhoto})
+  //     })
+  // }
 
   return {
     displayAllPhotos,
