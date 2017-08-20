@@ -1,19 +1,28 @@
 <div class='edit-page'>
-  {{#with picture}}
-    <form action="/gallery/{{id}}/edit" method="POST">
+
+
+    <form action="/gallery/{{picture.id}}/edit" method="POST">
+
+  <img src="{{picture.link}}" alt=""><br />
+  Author: {{picture.author}}<br />
+  Description: {{picture.description}}<br />
+
       <label form="author">Author</label>
-      <input type="text" name="author" value="{{author}}">
+      <input type="text" name="author" value="{{picture.author}}">
 
       <label form="link">Image URL</label>
-      <input type="text" name="link" value="{{link}}">
+      <input type="text" name="link" value="{{picture.link}}">
 
       <label form="description">Description</label>
-      <input type="text" name="description" value="{{description}}">
-
-
+      <input type="text" name="description" value="{{picture.description}}"><br />
 
       <input type="hidden" name="_method" value="PUT">
-      <input type="submit" value="SUBMIT">
+      <input type="submit" value="UPDATE"><br />
+      <label for="Tags">Tags:</label>
+  {{#each metaData}}
+    <br>
+    <input type="checkbox" name="{{@key}}" value="{{this}}">{{@key}}: {{this}}
+  {{/each}}
 
       <div class="add_meta_field">
         <ul id="meta_fields"></ul>
@@ -23,11 +32,15 @@
 
     </form>
 
-  <img src="{{link}}" alt=""><br />
-  Author: {{author}}<br />
-  Description: {{description}}<br />
-  {{/with}}
-  Tags: {{metaData.place}}
+    <form action="/gallery/{{picture.id}}/edit" method="POST">
+        <label form="delete"></label>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+
+
+
 </div>
+
 
 <script src="/js/metaFields.js"></script>
