@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "username",
+    "password": "password",
+    "database": "database_name",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": "password",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "password",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "SESSION_SECRET": "add_your_secret_session_name_here"
+}
