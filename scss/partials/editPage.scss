@@ -1,39 +1,41 @@
-.edit-page {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  width: 80rem;
-}
-
-.main-photo-box {
+.edit-main-photo-box {
   width: 100%;
   border-bottom: 1px solid $light-grey;
   padding: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 540px) {
+    width: 75rem;
+    object-fit: cover;
+  }
 }
 
-.main-photo {
+.edit-main-photo {
   width: 100%;
-  display: flex;
+
+  @media screen and (min-width: 540px) {
+    width: 75rem;
+    object-fit: cover;
+  }
 }
+
+
 
 .info-box {
-  // background-color: yellow;
   display: flex;
   flex-direction: column;
   flex-flow: wrap;
   justify-content: space-around;
+  width: 100%;
 
   @media screen and (min-width: 540px) {
-    display: flex;
-    flex-direction: column;
-    flex-flow: wrap;
+    width: 2rem;
   }
 }
 
 .input-form {
-  // background-color: blue;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -41,7 +43,7 @@
   padding: 1rem;
 
   @media screen and (min-width: 540px) {
-    width: 15rem;
+    width: 14rem;
   }
 }
 
