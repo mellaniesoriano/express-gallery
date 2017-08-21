@@ -1,45 +1,50 @@
 <div class='edit-page'>
 
-  <div class="image-container">
-    <form action="/gallery/{{picture.id}}/edit" method="POST">
-    <img src="{{picture.link}}" alt=""><br />
+  <div class="main-photo-box">
+    <img src="{{picture.link}}" class="main-photo"><br />
 
-    <div class="image-info">
-      By: {{picture.author}}<br />Description: {{picture.description}}<br />
-      <label form="author">Author</label>
-      <input type="text" name="author" value="{{picture.author}}">
 
-      <label form="link">Image URL</label>
-      <input type="text" name="link" value="{{picture.link}}">
+    <div class="info-box">
+      <div class="photo-info">
+        Author: {{picture.author}}<br /><br />{{picture.description}}<br />
+      </div>
 
-      <label form="description">Description</label>
+      <div class="form-box">
+        <form action="/gallery/{{picture.id}}/edit" method="POST" class="input-form">
+      <label form="author">Author:</label>
+      <input type="text" name="author" value="{{picture.author}}"><BR />
+
+      <label form="link">Image URL:</label>
+      <input type="text" name="link" value="{{picture.link}}"><BR />
+
+      <label form="description">Description:</label>
       <input type="text" name="description" value="{{picture.description}}"><br />
 
-      <label for="Tags">Tags:</label>
-      {{#each metaData}}<br />
+      <div class="tags-container">
+        <label for="Tags">Tags:</label><br />
+      {{#each metaData}}
         <input type="checkbox" name="{{@key}}" value="{{this}}">{{@key}}: {{this}}
       {{/each}}
+      </div>
+
 
     <div class="add_meta_field">
       <ul id="meta_fields"></ul>
-      <button id="add_meta_field_button" type="button" >Add Meta Data</button>
-    </div>
+      <button id="add_meta_field_button" type="button" class="btn edit-button">Add Tags</button>
+    </div><BR /><BR />
 
     <input type="hidden" name="_method" value="PUT">
-    <input type="submit" value="UPDATE"><br />
-
+    <input type="submit" value="UPDATE" class="btn edit-button">
   </form>
-
-  <form action="/gallery/{{picture.id}}/edit" method="POST">
+  <form action="/gallery/{{picture.id}}/edit" method="POST" class="input-form">
     <label form="delete"></label>
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete" class="btn edit-button">
   </form>
-
-  </div>
-
-
   </div>
 </div>
+</div>
+</div>
+
 
 <script src="/js/metaFields.js"></script>

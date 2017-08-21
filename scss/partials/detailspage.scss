@@ -1,62 +1,75 @@
 .edit-page {
-  // background-color: blue;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   width: 80rem;
 }
 
-.image-container {
-  // background-color: yellow;
+.main-photo-box {
+  width: 100%;
+  border-bottom: 1px solid $light-grey;
+  padding: 1rem;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
 }
 
+.main-photo {
+  width: 100%;
+  display: flex;
+}
 
-// .list-page {
-//   // background-color: yellow;
-//   display: flex;
-//   flex-flow: row wrap;
-//   justify-content: center;
-//   width: 80rem;
-// }
+.info-box {
+  // background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  justify-content: space-around;
 
-// .main-photo-box {
-//   // background-color: green;
-//   width: 100%;
-//   border-bottom: 1px solid $light-grey;
-//   padding: 1rem;
+  @media screen and (min-width: 540px) {
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+}
 
-//   @media screen and (min-width: 540px) {
-//     width: 40rem;
-//     object-fit: cover;
-//   }
-// }
+.input-form {
+  // background-color: blue;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 20rem;
+  padding: 1rem;
 
-// .main-photo {
-//   width: 100%;
+  @media screen and (min-width: 540px) {
+    width: 15rem;
+  }
+}
 
-//     @media screen and (min-width: 540px) {
-//     width: 40rem;
-//     object-fit: cover;
-//   }
+.photo-info {
+  padding: 1rem;
 
-// }
+  @media screen and (min-width: 540px) {
+    width: 50%;
+  }
+}
 
-// .side-photos {
-//   // background-color: purple;
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-//   padding: 1rem;
+.edit-button {
+  background-color: $white;
+  font-family: $montserrat;
+  text-transform: uppercase;
+  border: 1.5px solid $grey;
+  padding: 0.8rem;
+  width: 100%;
+  color: $grey;
 
-//   @media screen and (min-width: 540px) {
-//     width: 31%;
-//   }
-// }
+  @media screen and (min-width: 540px) {
+    width: 15rem;
+    padding: 0.5rem;
+  }
+}
 
-// .side-photos img {
-//   // height: 20rem;
-//   width: 100%;
-//   object-fit: cover;
-// }
+.edit-button:hover {
+    background-color: $light-grey;
+    border: 1.5px solid $light-grey;
+    color: $white;
+  }
