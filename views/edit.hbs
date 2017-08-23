@@ -1,15 +1,15 @@
-<div class='edit-page'>
+<div class='list-page'>
 
-  <div class="main-photo-box">
-    <img src="{{picture.link}}" class="main-photo"><br />
+  <div class="edit-main-photo-box">
+    <img src="{{picture.link}}" class="edit-main-photo"><br />
 
 
-    <div class="info-box">
+    <div class="edit-main-photo-box">
       <div class="photo-info">
         Author: {{picture.author}}<br /><br />{{picture.description}}<br />
       </div>
-
-      <div class="form-box">
+      <div class="side-photos">
+        <div class="form-box">
         <form action="/gallery/{{picture.id}}/edit" method="POST" class="input-form">
       <label form="author">Author:</label>
       <input type="text" name="author" value="{{picture.author}}"><BR />
@@ -42,6 +42,9 @@
     <input type="submit" value="Delete" class="btn edit-button">
   </form>
   </div>
+
+      </div>
+
 </div>
 </div>
 </div>

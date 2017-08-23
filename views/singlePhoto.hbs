@@ -1,35 +1,37 @@
 <div class="list-page">
-
   <div class="main-photo-box">
+
+  <div class="single-featured-photo">
     {{#with allPhotos.[0]}}
     <img src="{{link}}" class="main-photo">
-    By: {{author}}<br />
+      <h3 class="author-tag">
+        By: {{author}}
+      </h3>
     {{description}}
     {{/with}}
-    <div class="form-box">
+  <br /><br />
+
+<div class="description-box">
+  <div class="form-box">
       <form action="/gallery/{{id}}" method="POST">
         <label form="delete"></label>
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete">
+        <input type="submit" value="Delete" class="edit-button">
       </form>
 
-      <form action="/gallery/{{id}}" method="POST">
-        <label form="delete"></label>
+      <form action="/gallery/{{id}}/edit" method="POST">
+        <label form="edit"></label>
         <input type="hidden" name="_method" value="PUT">
-        <input type="submit" value="Edit">
+        <input type="submit" value="Edit" class="edit-button">
       </form>
+      </div>
     </div>
   </div>
+</div>
 
   <div class="side-photos">
-  {{#each allPhotos}}
-    <img src="{{link}}" alt="">
-    <p class="img-description">
-      By: {{author}}<br />
-      {{description}}
-    </p>
+    {{#each allPhotos}}
+    <a href="/gallery/{{id}}"><img src="{{link}}"></a>
     {{/each}}
-
-
   </div>
 </div>
