@@ -24,7 +24,7 @@ router.route('/gallery')
 
 router.route('/gallery/:id')
   .get((req, res) => {
-    helpers.getPhotoById(req, res);
+    helpers.displayAllPhotos(req, res, 'singlePhoto');
   });
 
 router.route('/gallery/:id/edit')

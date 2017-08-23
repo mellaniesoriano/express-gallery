@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
 const dbFunctions = require('./routeFunctions/dbFunctions.js');
 
 router.route('/')

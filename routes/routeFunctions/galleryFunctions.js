@@ -32,27 +32,24 @@ module.exports = (() => {
   const postPhoto = (req, res) => {
     dbFunctions.createPhoto(req)
       .then((data) => {
-      Gallery.findAll({
-        limit: 1,
-        order: [['createdAt', 'DESC']]
-      })
-      .then((item) => {
-        console.log('*** ITEM >> ', item[0].id);
-        console.log(req.body.meta);
-        let metaObj = req.body.meta;
-        metaObj.id = item[0].id;
-
-        photoMetas().insertOne(metaObj);
+        Gallery.findAll({
+          limit: 1,
+          order: [['createdAt', 'DESC']]
+        })
+        .then((item) => {
+          let metaObj = req.body.meta;
+          metaObj.id = item[0].id;
+          photoMetas().insertOne(metaObj);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        res.redirect('/');
       })
       .catch((err) => {
         console.log(err);
       });
-      res.redirect('/');
-    })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    };
 
   const editPhoto = (req, res) => {
     dbFunctions.updatePhoto(req)
@@ -63,7 +60,7 @@ module.exports = (() => {
             $set: req.body.meta
           });
         photoMetas().update(
-          query,{
+          query, {
             $unset: dbFunctions.removeValues(metaRemove)
           });
         res.redirect('edit');
@@ -81,19 +78,15 @@ module.exports = (() => {
 
       let query = { id: pictureID };
       photoMetas().findOne(query, (err, data) => {
-        if(data){
+        if (data) {
           photoMetas().update(
-            query,
-            {
+            query, {
               $set: addMeta
-            }
-            );
+            });
           photoMetas().update(
-            query,
-            {
+            query, {
               $unset: dbFunctions.removeValues(metaRemove)
-            }
-            );
+            });
         } else {
           let metaObj = req.body.meta;
           metaObj.id = pictureID;
@@ -135,6 +128,7 @@ module.exports = (() => {
   const getEditPhotoId = (req, res) => {
     dbFunctions.getById(req)
       .then((picture) => {
+        console.log('PICTURE >>>', picture);
         let query = { id: parseInt(req.params.id) };
         photoMetas().findOne(query, {id:0, _id:0})
           .then((metaData) => {
